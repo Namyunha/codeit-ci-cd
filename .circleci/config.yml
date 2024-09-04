@@ -7,3 +7,11 @@ workflows:
       - cypress/run:
           cypress-command: npx cypress run
           start-command: npm run start
+executors:
+  default:
+    docker:
+      - image: cimg/node:<< parameters.node-version >>-browsers
+    parameters:
+      node-version:
+        default: 18.17.0
+        type: string
