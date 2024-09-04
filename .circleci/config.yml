@@ -5,6 +5,18 @@ orbs:
   # the strict explicit version "cypress-io/cypress@3.x.y"
   # to lock the version and prevent unexpected CI changes
   cypress: cypress-io/cypress@3
+jobs:
+  cypress-run:
+    executor:
+      name: cypress/browsers-chrome-node
+      version: 18.17.0
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: npm install
+      - cypress/run:
+          start-command: npm run start
 workflows:
   build:
     jobs:
